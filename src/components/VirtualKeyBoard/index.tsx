@@ -65,7 +65,8 @@ const KeyCap: React.FC<{
 
   React.useEffect(() => {
     isCurrentWinner !== null && setKeyCapStatus(null);
-  }, [isCurrentWinner]);
+    currentRowId === 0 && setKeyCapStatus(null);
+  }, [isCurrentWinner, currentRowId]);
 
   const isEspecialKeycap: boolean =
     keycap === "ENTER" || keycap === "\u232b" ? true : false;
