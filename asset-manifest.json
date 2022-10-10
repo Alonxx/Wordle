@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/Wordle/static/css/main.9aa846d2.css",
-    "main.js": "/Wordle/static/js/main.4cacf28d.js",
-    "static/js/787.1f49d413.chunk.js": "/Wordle/static/js/787.1f49d413.chunk.js",
-    "static/media/bg_dark.svg": "/Wordle/static/media/bg_dark.c4146ad2663188cecd38.svg",
-    "static/media/bg_light.svg": "/Wordle/static/media/bg_light.c2dc2df5c68793c41933.svg",
-    "static/media/switch_light.svg": "/Wordle/static/media/switch_light.670570b2f293680acbbd.svg",
-    "static/media/switch_dark.svg": "/Wordle/static/media/switch_dark.cb0f0f48c744e4c0eed6.svg",
-    "index.html": "/Wordle/index.html",
-    "main.9aa846d2.css.map": "/Wordle/static/css/main.9aa846d2.css.map",
-    "main.4cacf28d.js.map": "/Wordle/static/js/main.4cacf28d.js.map",
-    "787.1f49d413.chunk.js.map": "/Wordle/static/js/787.1f49d413.chunk.js.map"
+    "main.css": "/static/css/main.2beb628a.css",
+    "main.js": "/static/js/main.e43b3a25.js",
+    "static/js/787.1f49d413.chunk.js": "/static/js/787.1f49d413.chunk.js",
+    "static/media/bg_dark.svg": "/static/media/bg_dark.c4146ad2663188cecd38.svg",
+    "static/media/bg_light.svg": "/static/media/bg_light.c2dc2df5c68793c41933.svg",
+    "static/media/switch_light.svg": "/static/media/switch_light.670570b2f293680acbbd.svg",
+    "static/media/switch_dark.svg": "/static/media/switch_dark.cb0f0f48c744e4c0eed6.svg",
+    "index.html": "/index.html",
+    "main.2beb628a.css.map": "/static/css/main.2beb628a.css.map",
+    "main.e43b3a25.js.map": "/static/js/main.e43b3a25.js.map",
+    "787.1f49d413.chunk.js.map": "/static/js/787.1f49d413.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.9aa846d2.css",
-    "static/js/main.4cacf28d.js"
+    "static/css/main.2beb628a.css",
+    "static/js/main.e43b3a25.js"
   ]
 }
