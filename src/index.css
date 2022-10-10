@@ -1,13 +1,76 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer base {
+
+  body {
+
+    font-family: 'Roboto', sans-serif;
+
+  }
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+
+@layer components {
+
+  .toggle_bg{
+        background: url(../public/images/switch/bg_dark.svg) no-repeat center center;
+  }
+
+.toggle_bg:after {
+    content: '';
+  background: url(../public/images/switch/switch_dark.svg) no-repeat center center;
+    @apply absolute top-[3px] left-[3px] rounded-full h-[23.33px] w-[23.33px] transition shadow-sm;
+  }
+
+input:checked+.toggle_bg:after {
+    transform: translateX(130%);
+  background: url(../public/images/switch/switch_light.svg) no-repeat center center;
+  }
+
+input:checked+.toggle_bg {
+    background: url(../public/images/switch/bg_light.svg) no-repeat center center;
+ 
+  }
+
+.idle{
+  @apply bg-white border border-solid border-black 
+}
+.wait {
+  @apply bg-gray-concrete text-black dark:text-white
+}
+.inPosition {
+  @apply bg-green-inPosition 
+}
+.notPosition {
+  @apply bg-yellow-notPosition 
+}
+.wrong {
+  @apply bg-gray-wrong 
+}
+
+.example_box{
+  @apply bg-white border border-solid border-black dark:border-white dark:bg-blue-dark
+}
+
+.box_word{
+  @apply w-[76px] h-[76px] text-center flex justify-center items-center rounded-[5px]
+}
+
+.text_body {
+  @apply font-normal text-[19px] leading-[22.27px] text-left;
+}
+
+.keycap_normal{
+  @apply w-[44.67px] text-[18px] leading-[21px] font-semibold
+}
+
+.keycap_special {
+  @apply w-[71.78px] text-[15px] leading-[18px] font-semibold
+}
+
 }
