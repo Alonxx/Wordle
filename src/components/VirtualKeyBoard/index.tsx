@@ -87,10 +87,10 @@ const KeyCap: React.FC<{
       }}
       className={` ${
         isEspecialKeycap ? "keycap_special" : "keycap_normal"
-      } h-[51.05px] rounded-[5px] flex  justify-center items-center   dark:bg-blue-keycap-bg dark:text-white outline-none ${
+      } h-[51.05px] rounded-[5px] flex  justify-center items-center    dark:text-white outline-none ${
         keyCapStatus
           ? `${keyCapStatus} text-white`
-          : "bg-gray-keycap-bg text-gray-keycap-text"
+          : "bg-gray-keycap-bg text-gray-keycap-text dark:bg-blue-keycap-bg"
       }`}
     >
       <span>{keycap}</span>
