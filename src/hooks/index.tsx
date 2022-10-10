@@ -7,3 +7,4 @@ export { useCheckIsLoser } from "./useCheckIsLoser";
 export { useFindPositionToDeleteLetter } from "./useFindPositionToDeleteLetter";
 export { useCreateTimeToNewWord } from "./useCreateTimeToNewWord";
 export { useCalculateTimeLeft } from "./useCalculateTimeLeft";
+export { useCheckKeyCapStatus } from "./useCheckKeyCapStatus";

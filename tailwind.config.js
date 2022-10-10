@@ -4,6 +4,9 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
+      gridTemplateColumns: {
+        "keyboard-row": "repeat(10, 1fr)",
+      },
       colors: {
         "gray-smoke": "#F3F3F3",
         "black-blue": "#202537",

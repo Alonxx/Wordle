@@ -37,6 +37,9 @@ input:checked+.toggle_bg {
  
   }
 
+.keyboard_row{
+  @apply grid grid-cols-keyboard-row gap-[9.57px]
+}
 .idle{
   @apply bg-white border border-solid border-black 
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import { BoardHeader, RowWordsBoxs, VirtualKeyBoard } from "src/components/";
+import { BoardHeader, RowWordsBoxs, VirtualKeyBoard } from "src/components";
 import {
   useCheckIsValidKeyCap,
   useCheckLettersStatus,
@@ -66,32 +66,32 @@ export const Board: React.FC = () => {
   };
 
   const handleKeyCapPress = (key: string) => {
-    //TODO: cambiar a switch
     if (isCurrentWinner === null && currentWord) {
-      if (key === "ENTER") {
-        if (
-          !rowsWords[currentRowId].word.some(
-            (letters) => letters.letter === null
-          )
-        ) {
-          const rowWordsResult = checkLettersStatus(
-            currentWord,
-            rowsWords[currentRowId].word
-          );
-          const rowWordsUpdated = updateCurrentRowWord(rowWordsResult);
-          checkIsWinnerOrLoser(rowWordsUpdated, rowWordsResult);
-        }
-        return;
-      }
-      if (key === "BACKSPACE") {
-        const positionToDelete = findPositionToDeleteLetter();
-        positionToDelete !== -1 && deleteLetterInCurrentRow(positionToDelete);
-        return;
-      }
-      if (isValidKeyCap(key)) {
-        const positionToAdd = findPositionToAddLetter();
-        positionToAdd !== -1 && pushLetterToCurrentRow(key, positionToAdd);
-        return;
+      switch (key) {
+        case "ENTER":
+          if (
+            rowsWords[currentRowId].word.every(
+              (letters) => letters.letter !== null
+            )
+          ) {
+            const rowWordsResult = checkLettersStatus(
+              currentWord,
+              rowsWords[currentRowId].word
+            );
+            const rowWordsUpdated = updateCurrentRowWord(rowWordsResult);
+            checkIsWinnerOrLoser(rowWordsUpdated, rowWordsResult);
+          }
+          break;
+        case "BACKSPACE":
+          const positionToDelete = findPositionToDeleteLetter();
+          positionToDelete !== -1 && deleteLetterInCurrentRow(positionToDelete);
+          break;
+        default:
+          if (isValidKeyCap(key)) {
+            const positionToAdd = findPositionToAddLetter();
+            positionToAdd !== -1 && pushLetterToCurrentRow(key, positionToAdd);
+          }
+          break;
       }
     }
   };
@@ -110,15 +110,3 @@ export const Board: React.FC = () => {
     </div>
   );
 };
-
-//skeleton
-
-//hacer test unit
-//teclado virtual de colores
-//agregar animaciones
-//deployar en gh pages
-//responsive
-//hacer cypress
-
-//agregar docker
-//...

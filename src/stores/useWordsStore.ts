@@ -27,6 +27,7 @@ export const useWordsStore = create<IWordsStore>()(
       rowsWords: JSON.parse(JSON.stringify(initialRowsWordsData)),
       currentRowId: 0,
       currentWord: null,
+
       pushLetterToCurrentRow: (letter, positionToAddLetter) => {
         const { currentRowId, rowsWords } = get();
 
@@ -103,12 +104,12 @@ export const useWordsStore = create<IWordsStore>()(
             const words: string[] = JSON.parse(JSON.stringify(resp.data)).split(
               "\n"
             );
-            const wordsWhitMinimumLength = words.filter(
+            const wordsWhitLengthAndNoRepeat = words.filter(
               (word) => word.length === 5 && word !== currentWord
             );
 
-            const wordsWithoutAccents = wordsWhitMinimumLength.filter((word) =>
-              /^[a-zA-Z_]+$/.test(word)
+            const wordsWithoutAccents = wordsWhitLengthAndNoRepeat.filter(
+              (word) => /^[a-zA-Z_]+$/.test(word)
             );
             const wordRandom =
               wordsWithoutAccents[
@@ -117,7 +118,7 @@ export const useWordsStore = create<IWordsStore>()(
 
             set((state) => ({ ...state, currentWord: wordRandom }));
 
-            /* solo para que puedan saber que palabra se selecciono y puedan testear el funcionamiento */
+            /* dejo para que puedan saber que palabra se selecciono y puedan testear el funcionamiento */
             console.log("PARA TESTEAR FUNCIONAMIENTO DE LA APP", {
               "PALABRA SELECCIONADA": wordRandom,
             });

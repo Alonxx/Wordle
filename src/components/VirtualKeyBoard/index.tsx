@@ -1,5 +1,7 @@
 import React, { useCallback } from "react";
 import { keysCapsValid } from "src/constants";
+import { useCheckKeyCapStatus } from "src/hooks";
+import { useWordsStore, useUserDataStore } from "src/stores";
 
 interface Props {
   handleKeyCapPress: (key: string) => void;
@@ -24,17 +26,17 @@ export const VirtualKeyBoard: React.FC<Props> = ({ handleKeyCapPress }) => {
 
   return (
     <div className=" w-[638px] h-[238px] rounded-[15px] bg-gray-keyboard dark:bg-blue-dark-light">
-      <div className="grid grid-cols-[repeat(10,1fr)] gap-[9.57px] pt-[33px] pl-[52.6px] pr-[52.6px]">
+      <div className="keyboard_row  p-[33px_52.6px_0px_52.6px]">
         {keyRowA.map((key, i) => (
           <KeyCap key={i} keycap={key} handleKeyCapPress={handleKeyCapPress} />
         ))}
       </div>
-      <div className="mt-[9.57px] grid grid-cols-[repeat(10,1fr)] gap-[9.57px] pl-[68px] pr-[37.21px]">
+      <div className="keyboard_row mt-[9.57px] pl-[68px] pr-[37.21px]">
         {keyRowB.map((key, i) => (
           <KeyCap key={i} keycap={key} handleKeyCapPress={handleKeyCapPress} />
         ))}
       </div>
-      <div className="mt-[9.57px] grid grid-cols-[repeat(10,1fr)] gap-[9.57px] pl-[20px] pr-[85.22px]">
+      <div className="keyboard_row mt-[9.57px] before:gap-[9.57px] pl-[20px] pr-[85.22px]">
         {keyRowC.map((key, i) => (
           <KeyCap key={i} keycap={key} handleKeyCapPress={handleKeyCapPress} />
         ))}
@@ -47,6 +49,24 @@ const KeyCap: React.FC<{
   keycap: string;
   handleKeyCapPress: (key: string) => void;
 }> = ({ keycap, handleKeyCapPress }) => {
+  const [keyCapStatus, setKeyCapStatus] = React.useState<string | null>(null);
+
+  const { rowsWords, currentRowId } = useWordsStore();
+  const { isCurrentWinner } = useUserDataStore();
+
+  const checkKeyCapStatus = useCheckKeyCapStatus();
+
+  React.useEffect(() => {
+    if (currentRowId > 0 && keyCapStatus === null) {
+      const status = checkKeyCapStatus(keycap, rowsWords);
+      setKeyCapStatus(status);
+    }
+  }, [currentRowId]);
+
+  React.useEffect(() => {
+    isCurrentWinner !== null && setKeyCapStatus(null);
+  }, [isCurrentWinner]);
+
   const isEspecialKeycap: boolean =
     keycap === "ENTER" || keycap === "\u232b" ? true : false;
 
@@ -66,9 +86,13 @@ const KeyCap: React.FC<{
       }}
       className={` ${
         isEspecialKeycap ? "keycap_special" : "keycap_normal"
-      } h-[51.05px] rounded-[5px] flex  justify-center items-center bg-gray-keycap-bg text-gray-keycap-text dark:bg-blue-keycap-bg dark:text-white outline-none`}
+      } h-[51.05px] rounded-[5px] flex  justify-center items-center   dark:bg-blue-keycap-bg dark:text-white outline-none ${
+        keyCapStatus
+          ? `${keyCapStatus} text-white`
+          : "bg-gray-keycap-bg text-gray-keycap-text"
+      }`}
     >
-      <span className=" ">{keycap}</span>
+      <span>{keycap}</span>
     </button>
   );
 };
