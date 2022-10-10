@@ -112,7 +112,6 @@ export const Board: React.FC = () => {
 };
 
 //skeleton
-//mejorar tailwind los m-[2_2_2_]
 
 //hacer test unit
 //teclado virtual de colores
